@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { RiMenu2Fill, RiArrowDropDownLine } from "react-icons/ri";
 import Desino_logo from "/Desino_logo.svg";
 import { TbShoppingBagHeart } from "react-icons/tb";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import MobileNav from "./MobileNav";
 
-function Navbar() {
+
+
+
+
+
+function Header() {
+
+  const [menuIcon, setMenuIcon] = useState(false)
+
+
+
+  const handleClick = () => {
+    setMenuIcon(!menuIcon)
+  }
+
+  console.log(menuIcon);
+  
+
   return (
     <>
-      <header className="bg-white shadow-none ml-5 mr-5">
+      <header className="bg-white shadow-none ml-5 mr-5 relative">
         {/* Above Section */}
-        <div className="h-25 pl-5 pt-3 flex justify-between items-center">
-          <RiMenu2Fill size={32} />
-          <div className="flex items-center">
-            <img src={Desino_logo} alt="Logo" className="w-12 h-12" />
-            <h1 className="text-2xl font-bold">Desino</h1>
+        <div className="h-25 pl-5 pt-3 flex justify-between items-center ">
+          <RiMenu2Fill  size={32} onClick={handleClick}/>
+          {menuIcon && <MobileNav  toggle = {handleClick} />}
+          <div className="flex items-center justify-center ml-10">
+            <img src={Desino_logo} alt="Logo" className="w-12 h-12 mt-1" />
+            <h1 className="text-3xl font-bold">Desino</h1>
           </div>
           <div className="flex items-center gap-x-6 pr-5">
             <Link to={""}>About</Link>
             <Link>FAQs</Link>
+            <Link className="border-2 bg-black text-white h-10 w-30 text-center px-2 py-1 rounded-3xl hover:bg-orange-500">Login/Signup</Link>
             <TbShoppingBagHeart size={32} />
           </div>
         </div>
@@ -53,17 +73,17 @@ function Navbar() {
             <IoSearchOutline size={24} className="absolute"/>
           </span>
           </div>
-          <div className="flex items-center gap-x-6 pr-5">
-            <Link className="border-2 border-gray-200 rounded-2xl h-8 w-12 text-center ">
+          <div className="flex items-center gap-x-4 pr-5">
+            <Link className="border-2 border-gray-200 rounded-3xl h-10 w-25 text-center p-1 hover:bg-black hover:text-white ">
               Men
             </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-8 w-17 text-center ">
+            <Link className="border-2 border-gray-200 rounded-3xl h-10 w-25 text-center p-1 hover:bg-black hover:text-white">
               Women
             </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-8 w-17 text-center ">
+            <Link className="border-2 border-gray-200 rounded-3xl h-10 w-25 text-center p-1 hover:bg-black hover:text-white ">
               Children
             </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-8 w-15 text-center ">
+            <Link className="border-2 border-gray-200 rounded-3xl h-10 w-25 text-center p-1 hover:bg-black hover:text-white ">
               Brands
             </Link>
           </div>
@@ -73,4 +93,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Header;

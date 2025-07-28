@@ -18,13 +18,13 @@ export default function Hero() {
                 <span>Outfit</span>
               </div>
             </h1>
-            <p className="mt-4 text-white text-xl">
+            <span className="mt-4 text-white text-xl">
               <div className="flex flex-col">
                 <span>From stunning designs to standout products— Desino</span>
                 <span> brings you creative fashion and lifestyle pieces</span>
                 <span>you'll love to own.</span>
               </div>
-            </p>
+            </span>
             <button className="mt-6 pr-10 py-2 bg-black text-white rounded-3xl hover:bg-gray-900 w-70">
               Explore Product
             </button>
@@ -55,24 +55,24 @@ export default function Hero() {
 
         {/* Bottom Cards */}
         <div className="col-span-3 grid grid-cols-2 gap-6 mt-6">
-          <div className="bg-gray-200 p-4 flex items-center justify-between h-50 rounded-4xl">
+          <div className="bg-gray-200 p-4 flex items-center justify-between h-50 rounded-4xl relative">
             <div className="">
-              <h2 className="font-medium text-3xl flex flex-col ml-10 mt-16">
+              <h2 className="font-medium text-3xl flex flex-col ml-10 absolute">
                 <span>Trendy</span>
                 <span>Sunglass</span>
               </h2>
             </div>
-            <img src={goggle} alt="Sunglasses" className="h-50 mr-20" />
+            <img src={goggle} alt="Sunglasses" className="h-50  absolute ml-60" />
           </div>
-          <div className="bg-orange-100 p-4 flex items-center justify-between rounded-4xl h-50">
+          <div className="bg-orange-100 p-4 flex items-center justify-between rounded-4xl h-50 relative">
             <div>
-              <h2 className="font-medium text-3xl flex flex-col ml-10 mt-16">
+              <h2 className="font-medium text-3xl flex flex-col ml-10  absolute">
                 <span>Popular</span>
                 <span>Shoes</span>
               </h2>
             </div>
-            <img src={shoes} alt="Shoes" className=" h-50 " />
-            <img src={shoe2} alt="Shoes" className=" h-50 mr-20" />
+            <img src={shoes} alt="Shoes" className=" h-50  absolute ml-35" />
+            <img src={shoe2} alt="Shoes" className=" h-50  absolute ml-95" />
           </div>
         </div>
       </div>
