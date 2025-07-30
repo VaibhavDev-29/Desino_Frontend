@@ -8,11 +8,12 @@ import upi from "/upi.svg";
 import { TiSocialFacebook, TiSocialLinkedin } from "react-icons/ti";
 import { FaInstagram, FaGithub } from "react-icons/fa";
 import { PiCopyrightLight } from "react-icons/pi";
+import { MdOutlineMail } from "react-icons/md";
 
 function Footer() {
   return (
     <>
-      <footer className="h-115 bg-gray-100">
+      <footer className="h-115 bg-gray-100 relative">
         <div className=" pt-40">
           <div className="flex justify-around pr-8 pl-5 gap-20">
             <div className="flex items-start justify-center flex-col  w-1/4 gap-5">
@@ -71,6 +72,27 @@ function Footer() {
               <img src={rupay} alt="Logo" className="h-12 w-12" />
               <img src={upi} alt="Logo" className="h-12 w-12 " />
             </div>
+          </div>
+        </div>
+
+        <div className="absolute -top-25 w-[95%] left-[2.5%]">
+          <div className="h-50 bg-lime-800/70  rounded-4xl flex  justify-between px-20 items-center relative">
+            <div className="flex flex-col text-3xl text-white">
+            <span>STAY UPTO DATE ABOUT OUR</span>
+            <span>LATEST OFFERS</span>
+          </div>
+
+          <div className="flex flex-col gap-5 justify-center items-center">
+            <button className="bg-white w-60 h-8 rounded-3xl relative text-center cursor-pointer">
+              <MdOutlineMail size={20} className="absolute left-3 top-1.5"/>
+              Enter your email here
+            </button>
+              
+            <button className="bg-white w-60 h-8 rounded-3xl cursor-pointer">
+              Subscribe to Newsletter
+            </button>
+          </div>
+      
           </div>
         </div>
       </footer>

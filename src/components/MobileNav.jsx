@@ -24,7 +24,7 @@ function MobileNav({ toggle }) {
             <span className="text-center text-xl text-white">OFF</span>
           </div>
           <div>
-            <img src={shoutgirl} alt="Logo" className="w-22 h-22 mt-1" />
+            <img src={shoutgirl} alt="girlshouting" className="w-22 h-22 mt-1" />
           </div>
           <div className="flex flex-col gap-none">
             <span className="text-pink-500 text-2xl font-bold">FLAT</span>
@@ -144,7 +144,9 @@ function MobileNav({ toggle }) {
             </li>
           </ul>
           <div className="h-20 bg-gradient-to-br from-orange-50 to-orange-200 mt-2 text-center flex justify-center items-center">
-            Enjoy The Best Shopping Experience!
+            <span className="text-pink-500">
+                Enjoy The Best Shopping Experience <span className="text-pink-800">!</span>
+            </span>
           </div>
         </div>
       </nav>
