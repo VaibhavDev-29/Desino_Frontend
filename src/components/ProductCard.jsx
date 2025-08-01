@@ -10,7 +10,7 @@ const ProductCard = () => {
         <img
           src={casualShirt} // replace with your image
           alt="Casual Shirt"
-          className="w-full h-90 object-cover rounded-4xl"
+          className="w-full h-100 object-cover rounded-4xl"
         />
         <div className="absolute top-4 right-8 bg-white rounded-full p-1 shadow">
           <FaRegHeart className="text-red-500 w-5 h-5 fill-red-500" />

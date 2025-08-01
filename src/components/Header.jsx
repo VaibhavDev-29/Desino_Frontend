@@ -5,6 +5,7 @@ import { TbShoppingBagHeart } from "react-icons/tb";
 import { IoSearchOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import MobileNav from "./MobileNav";
+import { useCartStore } from "../store/CartStore";
 
 
 
@@ -14,14 +15,15 @@ import MobileNav from "./MobileNav";
 function Header() {
 
   const [menuIcon, setMenuIcon] = useState(false)
-
-
+  const cartCount = useCartStore((state) => state.cart.length)
+  const addToCart = useCartStore((state) => state.addToCart)
 
   const handleClick = () => {
     setMenuIcon(!menuIcon)
   }
 
   console.log(menuIcon);
+  console.log(cartCount);
   
 
   return (
@@ -35,11 +37,12 @@ function Header() {
             <img src={Desino_logo} alt="Logo" className="w-12 h-12 mt-1" />
             <h1 className="text-3xl font-bold">Desino</h1>
           </div>
-          <div className="flex items-center gap-x-6 pr-5">
+          <div className="flex items-center gap-x-6 pr-5 relative">
             <Link to={""}>About</Link>
             <Link>FAQs</Link>
             <Link className="border-2 bg-black text-white h-10 w-30 text-center px-2 py-1 rounded-3xl hover:bg-orange-500">Login/Signup</Link>
             <TbShoppingBagHeart size={32} />
+            <span className="absolute -top-1.5 right-3.5 text-xl font-bold text-lime-800/70">{cartCount}</span>
           </div>
         </div>
 

@@ -111,18 +111,18 @@ function Home() {
 
         <div className="flex  justify-center items-center h-130">
           <div className="flex flex-col gap-1">
-            <img src={model2} alt="" className="h-40 w-40 rounded-full" />
-            <img src={model3} alt="" className="h-40 w-50 rounded-full"/>
-          </div>
-          <div>
-            <img src={model1} alt="" className="h-120 w-120 rounded-full"/>
+            <img src={model2} alt="" className="h-40 w-40 rounded-full object-cover" />
+            <img src={model3} alt="" className="h-40 w-40 rounded-full object-cover"/>
           </div>
           <div className="">
-            <img src={model5} alt="" className="h-120 w-120 rounded-full"/>
+            <img src={model1} alt="" className="h-120 w-120 rounded-full object-cover"/>
+          </div>
+          <div className="">
+            <img src={model5} alt="" className="h-120 w-120 rounded-full object-cover "/>
           </div>
           <div className="flex flex-col gap-1">
-            <img src={model4} alt="" className="h-40 w-40 rounded-full"/>
-            <img src={model6} alt="" className="h-40 w-50 rounded-full"/>
+            <img src={model4} alt="" className="h-40 w-40 rounded-full object-cover"/>
+            <img src={model6} alt="" className="h-40 w-40 rounded-full object-cover"/>
           </div>
         </div>
 
