@@ -13,7 +13,7 @@ import { MdOutlineMail } from "react-icons/md";
 function Footer() {
   return (
     <>
-      <footer className="h-115 bg-gray-100 relative">
+      <footer className="h-115 bg-gray-100 relative z-50">
         <div className=" pt-40">
           <div className="flex justify-around pr-8 pl-5 gap-20">
             <div className="flex items-start justify-center flex-col  w-1/4 gap-5">

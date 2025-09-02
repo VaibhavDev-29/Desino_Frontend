@@ -22,13 +22,13 @@ function Header() {
     setMenuIcon(!menuIcon)
   }
 
-  console.log(menuIcon);
-  console.log(cartCount);
+  // console.log(menuIcon);
+  // console.log(cartCount);
   
 
   return (
     <>
-      <header className="bg-white shadow-none ml-5 mr-5 relative">
+      <header className="bg-white shadow-none ml-5 mr-5 relative z-50">
         {/* Above Section */}
         <div className="h-25 pl-5 pt-3 flex justify-between items-center ">
           <RiMenu2Fill  size={32} onClick={handleClick}/>
@@ -38,10 +38,10 @@ function Header() {
             <h1 className="text-3xl font-bold">Desino</h1>
           </div>
           <div className="flex items-center gap-x-6 pr-5 relative">
-            <Link to={""}>About</Link>
-            <Link>FAQs</Link>
-            <Link className="border-2 bg-black text-white h-10 w-30 text-center px-2 py-1 rounded-3xl hover:bg-orange-500">Login/Signup</Link>
-            <TbShoppingBagHeart size={32} />
+            <Link to={""} className="cursor-pointer">About</Link>
+            <Link className="cursor-pointer">FAQs</Link>
+            <Link className="border-2 bg-black text-white h-10 w-30 text-center px-2 py-1 rounded-3xl hover:bg-orange-500 cursor-pointer">Login/Signup</Link>
+            <TbShoppingBagHeart size={32} className="cursor-pointer" />
             <span className="absolute -top-1.5 right-3.5 text-xl font-bold text-lime-800/70">{cartCount}</span>
           </div>
         </div>

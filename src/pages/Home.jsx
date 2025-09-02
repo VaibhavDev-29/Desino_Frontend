@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
+import { useEffect, useState } from "react";
 import Herosection from "../components/HeroSection";
 import { Link } from "react-router-dom";
 import CategoryCard from "../components/CategoryCard";
@@ -11,77 +12,127 @@ import model5 from "/model5.webp";
 import model6 from "/model6.jpg";
 import Card from "../components/card";
 import ProductCard from "../components/ProductCard";
-
+import { getAllProducts, getProductById } from "../Api/products";
 
 function Home() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+   const fetchData = async () => {  
+      try {
+        setLoading(true);
+        const data = await getAllProducts();
+        setProducts(data);
+        setLoading(false)
+        
+      } catch (err) {
+        console.log(err)
+          setError("Failed to fetch products... ")
+      } finally {
+        setLoading(false);
+      }
+    }
+  useEffect(() => {   
+    fetchData();
+  }, []);
+
+  products.map((product) => {
+    // console.log(product.category);
+  });
+  // console.log("products sir ,",products)
+  products.forEach((item) => {
+    // console.log(item.category)
+  });
+  console.log(error);
+  if (loading) {
+    return <p>loading...</p>;
+  }
+  if (error) {
+    return <p className="text-sm text-red-600">{error} </p>
+  }
+  // console.log("category",category);
+
+  // console.log(products[0]?.title);
+
+  // const [category, setCategory] = useState([]);
+
+  // {
+  //   products.map((product) => setCategory(product.category));
+  //   console.log(category);
+  // }
+
   return (
     <>
       <Herosection />
       <section className="p-6 ml-10 mr-10">
         <div className="Categories-box">
           <div className="flex justify-between items-center">
-          <h2 className="text-3xl font-medium">Browse by Categories</h2>
-          <div className="flex gap-3">
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              All
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center p-1 hover:bg-black hover:text-white ">
-              Women
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              Children
-            </Link>
+            <h2 className="text-3xl font-medium">Browse by Categories</h2>
+            <div className="flex gap-3">
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                All
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center p-1 hover:bg-black hover:text-white ">
+                Women
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                Children
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div className=" category-box shadow-2xs pb-5 flex justify-between gap-2">
-          <CategoryCard />
-          <CategoryCard />
-          <CategoryCard />
-          <CategoryCard />
-        </div>
+          <div className=" category-box shadow-2xs pb-5 flex justify-between gap-2">
+            <CategoryCard />
+            <CategoryCard />
+            <CategoryCard />
+            <CategoryCard />
+          </div>
         </div>
 
         <div className="Productcard-box">
           <div className="flex justify-between items-center mt-5">
-          <h2 className="text-3xl font-medium">Popular Products</h2>
-          <div className="flex gap-3">
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              ALL
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center p-1 hover:bg-black hover:text-white ">
-              SHorts
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              JACKETS
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              SHOES
-            </Link>
-            <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
-              T-SHIRTS
-            </Link>
+            <h2 className="text-3xl font-medium">Popular Products</h2>
+            <div className="flex gap-3">
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                ALL
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center p-1 hover:bg-black hover:text-white ">
+                SHORTS
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                JACKETS
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                SHOES
+              </Link>
+              <Link className="border-2 border-gray-200 rounded-2xl h-10 w-20 text-center  p-1 hover:bg-black hover:text-white ">
+                T-SHIRTS
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div className=" pb-5 flex justify-between gap-2">
-          <div className="max-w-xs">
-            <ProductCard />
+          <div className="pb-5 flex justify-between gap-2">
+            {products
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 3)
+              .map((product, index) => (
+                <div
+                  className={index === 1 ? "flex-1" : "max-w-xs"}
+                  key={product.id}
+                >
+                  <ProductCard product={product} />
+                </div>
+              ))}
           </div>
-          <div className="flex-1">
-            <ProductCard />
-          </div>
-          <div className="max-w-xs">
-            <ProductCard />
-          </div>
-        </div>
 
-        <div className=" shadow-2xs mb-8 pb-5 flex justify-between gap-2 ">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
+          <div className=" shadow-2xs mb-8 pb-5 flex justify-between gap-2 ">
+            {products
+              .sort(() => 0.5 - Math.random())
+              .slice(0, 4)
+              .map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+          </div>
         </div>
 
         <div className="h-50 bg-red-200 rounded-4xl flex flex-col justify-center items-center relative">
@@ -107,22 +158,44 @@ function Home() {
           <span>reviews from our Client</span>
         </div>
 
-        
-
         <div className="flex  justify-center items-center h-130">
           <div className="flex flex-col gap-1">
-            <img src={model2} alt="" className="h-40 w-40 rounded-full object-cover" />
-            <img src={model3} alt="" className="h-40 w-40 rounded-full object-cover"/>
+            <img
+              src={model2}
+              alt=""
+              className="h-40 w-40 rounded-full object-cover"
+            />
+            <img
+              src={model3}
+              alt=""
+              className="h-40 w-40 rounded-full object-cover"
+            />
           </div>
           <div className="">
-            <img src={model1} alt="" className="h-120 w-120 rounded-full object-cover"/>
+            <img
+              src={model1}
+              alt=""
+              className="h-120 w-120 rounded-full object-cover"
+            />
           </div>
           <div className="">
-            <img src={model5} alt="" className="h-120 w-120 rounded-full object-cover "/>
+            <img
+              src={model5}
+              alt=""
+              className="h-120 w-120 rounded-full object-cover "
+            />
           </div>
           <div className="flex flex-col gap-1">
-            <img src={model4} alt="" className="h-40 w-40 rounded-full object-cover"/>
-            <img src={model6} alt="" className="h-40 w-40 rounded-full object-cover"/>
+            <img
+              src={model4}
+              alt=""
+              className="h-40 w-40 rounded-full object-cover"
+            />
+            <img
+              src={model6}
+              alt=""
+              className="h-40 w-40 rounded-full object-cover"
+            />
           </div>
         </div>
 
@@ -131,10 +204,12 @@ function Home() {
         </div>
 
         <div className="flex justify-around">
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
+          {products
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 4)
+            .map((product) => (
+              <Card key={product.id} product={product} />
+            ))}
         </div>
       </section>
     </>
