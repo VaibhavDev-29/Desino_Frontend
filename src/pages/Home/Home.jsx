@@ -18,7 +18,7 @@ function Home() {
       setProducts(data);
       setLoading(false);
     } catch (err) {
-      // console.log(err);
+      <p>{err}</p>
       setError("Failed to fetch products... ");
     } finally {
       setLoading(false);
@@ -28,13 +28,8 @@ function Home() {
     fetchData();
   }, []);
 
-  products.map((product) => {
-    console.log(product.category);
-  });
-  products.forEach((item) => {
-    // console.log(item.category)
-  });
-  console.log(error);
+
+  
   if (loading) {
     return <p className="text-center text-2xl">loading...</p>;
   }
@@ -47,7 +42,7 @@ function Home() {
       <div className="min-h-screen">
         <Herosection />
         <section className="p-6 ml-10 mr-10">
-          <BrowserCategory />
+          <BrowserCategory products={products}/>
         </section>
         <section className="p-3 ml-5 mr-5">
           <PopularProducts products={products} />
