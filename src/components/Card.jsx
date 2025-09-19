@@ -3,7 +3,7 @@ import React from "react";
 // import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { FaStarHalfAlt } from "react-icons/fa";
-import polo from "/polo.jpg";
+// import polo from "/polo.jpg";
 
 const Card = ({ product }) => {
   return (
