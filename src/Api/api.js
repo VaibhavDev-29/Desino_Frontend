@@ -11,5 +11,4 @@ export default api;
 
 
 
-// const arr = [...Array(3)].map((_, i) => (i))
-// console.log(arr);
+

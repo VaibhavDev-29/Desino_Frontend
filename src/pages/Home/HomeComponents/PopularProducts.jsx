@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ProductCard from '../../components/ProductCard'
+import ProductCard from '../../../components/ProductCard'
+
 
 function PopularProducts({ products }) {
   return (

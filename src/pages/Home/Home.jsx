@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import Herosection from "./HeroSection";
-import PopularProducts from "./PopularProducts";
-import BrowserCategory from "./BrowseCategory";
-import OffersBanner from "./OffersBanner";
-import CustomerReview from "./CustomerReview";
-import YouMightAlsoLike from "./YouMightAlsoLike";
+import Herosection from "./HomeComponents/HeroSection";
+import PopularProducts from "./HomeComponents/PopularProducts";
+import BrowserCategory from "./HomeComponents/BrowseCategory";
+import OffersBanner from "./HomeComponents/OffersBanner";
+import CustomerReview from "./HomeComponents/CustomerReview";
+import YouMightAlsoLike from "./HomeComponents/YouMightAlsoLike";
 import { getAllProducts } from "../../Api/products";
 
 function Home() {
