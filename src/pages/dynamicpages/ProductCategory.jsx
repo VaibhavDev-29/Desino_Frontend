@@ -2,7 +2,11 @@ import React from 'react'
 
 function ProductCategory() {
   return (
-    <div>ProductCategory</div>
+    <>
+    <div className='h-screen bg-white flex justify-center'>
+        <h1 className='font-bold text-3xl pt-5'>ProductCategory</h1>
+    </div>
+    </>
   )
 }
 

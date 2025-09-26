@@ -22,7 +22,13 @@ function ProductDetail() {
   
   
 
-  return <div>ProductDetail</div>;
+  return (
+    <>
+    <div className='h-screen bg-white flex justify-center'>
+        <h1 className='font-bold text-3xl pt-5'>Product Detail</h1>
+    </div>
+    </>
+  );
 }
 
 export default ProductDetail;

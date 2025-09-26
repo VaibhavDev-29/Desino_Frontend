@@ -2,7 +2,11 @@ import React from 'react'
 
 function AboutPage() {
   return (
-    <div>AboutPage</div>
+    <>
+    <div className='h-screen bg-white flex justify-center'>
+        <h1 className='font-bold text-3xl pt-5'>About Page</h1>
+    </div>
+    </>
   )
 }
 

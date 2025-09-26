@@ -29,6 +29,10 @@ function App() {
           path: "about",
           element: <AboutPage />,
         },
+        {
+          path: "cart",
+          element: <CartPage/>,
+        },
       ],
     },
     {
@@ -63,10 +67,6 @@ function App() {
         },
       ],
     },
-    {
-      path: "/cart",
-      element:<CartPage/>
-    }
   ]);
 
   return (
